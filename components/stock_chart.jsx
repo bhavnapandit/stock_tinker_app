@@ -28,7 +28,6 @@ const StockChart = ({ symbol }) => {
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
         const result = await response.json();
-        console.log("API Response:", result);
 
         let chartData = [];
         if (Array.isArray(result)) chartData = result;
