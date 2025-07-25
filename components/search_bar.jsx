@@ -35,7 +35,6 @@ export function Searchbar() {
 
   useEffect(() => {
     const searchStocks = async () => {
-      console.log("enter");
 
       if (query.length < 2) {
         setResults([]);
@@ -49,7 +48,6 @@ export function Searchbar() {
           `https://portal.tradebrains.in/api/assignment/search?keyword=${query}&length=10`
         );
         const data = await response.json();
-        console.log(data);
 
         // Map response to match the expected structure
         const formattedResults = data.map((stock) => ({
