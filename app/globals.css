@@ -5,22 +5,76 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff; /* corrected to make background white in dark theme */
+    --foreground: #0b0a0a;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.ticker-bar {
+  background: linear-gradient(90deg, #2d3748 0%, #4a5568 100%);
+  border-bottom: 1px solid #e2e8f0;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.ticker-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  animation: scroll 60s linear infinite;
+  color: white;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.ticker-symbol {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.ticker-price {
+  font-weight: 600;
+}
+
+.ticker-change {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ticker-change.positive {
+  color: #48bb78;
+}
+
+.ticker-change.negative {
+  color: #f56565;
+}
+
+.ticker-trend-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.ticker-change-text {
+  font-size: 0.75rem;
 }

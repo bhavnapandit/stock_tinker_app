@@ -1,103 +1,177 @@
-import Image from "next/image";
+import { Searchbar } from '@/components/search_bar'
+import { TrendingUp, Search, BarChart3, Star, Activity, Target, Zap } from 'lucide-react'
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-pink-50 overflow-x-hidden">
+      <div className="bg-gradient-to-r from-red-100 via-white to-pink-50 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <Activity className="w-12 h-12 text-black animate-pulse" />
+              <h1 className="text-5xl lg:text-6xl font-bold text-black drop-shadow-lg">
+                Stock Market Tracker
+              </h1>
+            </div>
+            <p className="text-xl lg:text-2xl text-gray-600 font-medium max-w-3xl mx-auto">
+              Search, analyze, and track your favorite stocks in real-time with beautiful charts and insights
+            </p>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <div className="relative z-20 max-w-2xl mx-auto">
+            <div className="bg-white backdrop-blur-sm rounded-2xl p-6 border border-white shadow-2xl">
+              <Searchbar />
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20 relative z-0">
+          <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-red-100 hover:border-red-200 hover:-translate-y-2">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold text-gray-800">Search Stocks</h3>
+              <div className="bg-gradient-to-br from-red-100 to-red-200 p-3 rounded-xl group-hover:from-red-200 group-hover:to-red-300 transition-all duration-300">
+                <Search className="w-7 h-7 text-red-600" />
+              </div>
+            </div>
+            <div className="mb-4">
+              <div className="text-3xl font-bold text-red-600 mb-3">Real-Time</div>
+              <p className="text-gray-600 leading-relaxed">Search from thousands of stocks with instant results and live data</p>
+            </div>
+            <div className="mt-6 h-1 bg-gradient-to-r from-red-400 to-pink-400 rounded-full"></div>
+          </div>
+
+          <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-red-100 hover:border-red-200 hover:-translate-y-2">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold text-gray-800">Price Charts</h3>
+              <div className="bg-gradient-to-br from-pink-100 to-pink-200 p-3 rounded-xl group-hover:from-pink-200 group-hover:to-pink-300 transition-all duration-300">
+                <BarChart3 className="w-7 h-7 text-pink-600" />
+              </div>
+            </div>
+            <div className="mb-4">
+              <div className="text-3xl font-bold text-pink-600 mb-3">Interactive</div>
+              <p className="text-gray-600 leading-relaxed">Beautiful transparent red charts with detailed price visualization</p>
+            </div>
+            <div className="mt-6 h-1 bg-gradient-to-r from-pink-400 to-red-400 rounded-full"></div>
+          </div>
+
+          <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-red-100 hover:border-red-200 hover:-translate-y-2">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold text-gray-800">Market Trends</h3>
+              <div className="bg-gradient-to-br from-red-100 to-pink-100 p-3 rounded-xl group-hover:from-red-200 group-hover:to-pink-200 transition-all duration-300">
+                <TrendingUp className="w-7 h-7 text-red-500" />
+              </div>
+            </div>
+            <div className="mb-4">
+              <div className="text-3xl font-bold text-red-500 mb-3">Live</div>
+              <p className="text-gray-600 leading-relaxed">Track market movements and analyze trends in real-time</p>
+            </div>
+            <div className="mt-6 h-1 bg-gradient-to-r from-red-400 to-red-500 rounded-full"></div>
+          </div>
+
+          <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-red-100 hover:border-red-200 hover:-translate-y-2">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold text-gray-800">Favorites</h3>
+              <div className="bg-gradient-to-br from-pink-100 to-red-100 p-3 rounded-xl group-hover:from-pink-200 group-hover:to-red-200 transition-all duration-300">
+                <Star className="w-7 h-7 text-pink-500" />
+              </div>
+            </div>
+            <div className="mb-4">
+              <div className="text-3xl font-bold text-pink-500 mb-3">Save</div>
+              <p className="text-gray-600 leading-relaxed">Quick access to your favorite stocks with personalized tracking</p>
+            </div>
+            <div className="mt-6 h-1 bg-gradient-to-r from-pink-400 to-pink-500 rounded-full"></div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-red-100 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-red-100 to-transparent rounded-full -translate-y-32 translate-x-32 opacity-50"></div>
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-pink-100 to-transparent rounded-full translate-y-24 -translate-x-24 opacity-50"></div>
+
+          <div className="relative z-10">
+            <div className="mb-12 text-center">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <Target className="w-10 h-10 text-red-500" />
+                <h2 className="text-4xl font-bold text-gray-900">How to Use</h2>
+              </div>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Get started with our stock tracker in three simple steps and unlock powerful market insights
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-12">
+              <div className="text-center group">
+                <div className="relative mb-8">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                    1
+                  </div>
+                  <div className="absolute -inset-2 bg-gradient-to-br from-red-200 to-pink-200 rounded-full opacity-20 animate-pulse"></div>
+                </div>
+                <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-6 border border-red-100">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                    <Search className="w-6 h-6 text-red-500" />
+                    Search Stocks
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Use our powerful search bar to find any stock by name or symbol with instant autocomplete suggestions
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-center group">
+                <div className="relative mb-8">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                    2
+                  </div>
+                  <div className="absolute -inset-2 bg-gradient-to-br from-red-200 to-pink-200 rounded-full opacity-20 animate-pulse"></div>
+                </div>
+                <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-6 border border-red-100">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                    <BarChart3 className="w-6 h-6 text-red-500" />
+                    View Details
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Click on any stock to see detailed information, beautiful charts, and comprehensive market statistics
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-center group">
+                <div className="relative mb-8">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                    3
+                  </div>
+                  <div className="absolute -inset-2 bg-gradient-to-br from-red-200 to-pink-200 rounded-full opacity-20 animate-pulse"></div>
+                </div>
+                <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-6 border border-red-100">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                    <Zap className="w-6 h-6 text-red-500" />
+                    Track & Analyze
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Save your favorites and analyze price trends with our interactive tools and real-time updates
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 text-center">
+          <div className="bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl p-8 shadow-2xl">
+            <h3 className="text-3xl font-bold text-white mb-4">Ready to Start Trading?</h3>
+            <p className="text-red-100 text-lg mb-6 max-w-2xl mx-auto">
+              Join thousands of investors who trust our platform for accurate, real-time market data and insights.
+            </p>
+            <div className="inline-flex items-center gap-2 bg-white text-red-600 px-8 py-3 rounded-full font-bold hover:bg-red-50 transition-colors cursor-pointer shadow-lg">
+              <Activity className="w-5 h-5" />
+              Get Started Now
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
+

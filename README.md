@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Stock Ticker Application
 
-## Getting Started
+A comprehensive stock ticker application built with Next.js, featuring real-time stock search, detailed stock information, interactive charts, and SEO optimization.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Stock Search**: Real-time search functionality with autocomplete
+- **Stock Details**: Comprehensive stock information pages with dynamic routing
+- **Interactive Charts**: Price visualization using Recharts
+- **SEO Optimized**: Proper META tags and Open Graph implementation
+- **Rolling Ticker**: Live market data ticker bar
+- **Favorites**: Save and manage favorite stocks (localStorage)
+- **Responsive Design**: Mobile-first responsive design
+- **Loading States**: Smooth loading experiences
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 15 (App Router)
+- **Language**: Javascript
+- **Styling**: Tailwind CSS
+- **Charts**: Recharts
+- **Icons**: Lucide React
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+- Node.js 18+
+- npm or yarn
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:
+   \`\`\`bash
+   git clone `<repository-url>`
+   cd stock-ticker-app
+   \`\`\`
+2. Install dependencies:
+   \`\`\`bash
+   npm install
+   \`\`\`
+3. Run the development server:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+\`\`\`
+├── app/
+│   ├── layout.tsx          # Root layout with ticker bar
+│   ├── page.tsx            # Home page with search
+│   ├── stock/[symbol]/   # Dynamic stock detail pages
+│   └── globals.css         # Global styles
+├── components/
+│   ├── search-component.tsx    # Stock search with autocomplete
+│   ├── stock-chart.tsx         # Interactive price charts
+│   ├── favorite-button.tsx     # Favorite functionality
+│   ├── ticker-bar.tsx          # Rolling ticker bar
+\`\`\`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API Integration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application is designed to integrate with the following APIs:
+
+### Search API
+
+\`\`\`
+GET /api/assignment/search?keyword=RELIANCE&length=10
+Host: portal.tradebrains.in
+\`\`\`
+
+### Stock Ticker API
+
+\`\`\`Not using the API below as its response is currently 404, so using mock data instead.
+GET /api/assignment/index/NIFTY/movers/
+Host: portal.tradebrains.in
+\`\`\`
+
+### Stock Prices API
+
+\`\`\`
+GET /api/assignment/stock/SILVERLINE/prices?days=1&type=INTRADAY&limit=1
+Host: portal.tradebrains.in
+\`\`\`
+
+## Features Implementation
+
+### 1. Stock Search
+
+### 2. Stock Details Page
+
+### 3. SEO Implementation
+
+### 4. Charts
+
+
+\`\`\`
