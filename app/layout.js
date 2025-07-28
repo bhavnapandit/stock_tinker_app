@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-// 1.Add a watchlist page to show favourited stocks
+// 1.Add a watchlist page to show favourited stocks-done
 // 2.Add on click functionality to ticker-done
 // 3.In stock detail page add company full name properly while showing name as compared to symbol being used right now, eg. tcs -done
-// 4.Handle SEO dynamically for stock detail pages
+// 4.Handle SEO dynamically for stock detail pages-done

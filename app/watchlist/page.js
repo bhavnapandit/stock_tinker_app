@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FavoriteButton } from "@/components/favourite_btn";
-import { 
-  Heart, 
-  TrendingUp, 
-  TrendingDown, 
-  Activity, 
+import {
+  Heart,
+  TrendingUp,
+  TrendingDown,
+  Activity,
   AlertCircle,
   RefreshCw,
   Search,
@@ -25,11 +25,11 @@ export default function WatchlistPage() {
   // Get favorited stocks from localStorage
   const getFavoritedStocks = () => {
     try {
-      const favorites =  JSON.parse(localStorage.getItem("favoriteStocks"))
+      const favorites = JSON.parse(localStorage.getItem("favoriteStocks"))
       console.log(favorites);
-      
 
-      return favorites ;
+
+      return favorites;
     } catch (error) {
       console.error("Error reading favorites from localStorage:", error);
       return [];
@@ -46,7 +46,7 @@ export default function WatchlistPage() {
       const data = await res.json();
 
       if (!data || data.length === 0) return null;
-      
+
       const latest = data[0];
       return {
         symbol: symbol.toUpperCase(),
@@ -68,7 +68,7 @@ export default function WatchlistPage() {
   // Load watchlist and fetch stock data
   const loadWatchlist = async (showRefreshIndicator = false) => {
     if (showRefreshIndicator) setRefreshing(true);
-    
+
     const favorites = getFavoritedStocks();
     setWatchlist(favorites);
 
@@ -87,7 +87,7 @@ export default function WatchlistPage() {
     try {
       const results = await Promise.all(stockDataPromises);
       const newStockData = {};
-      
+
       results.forEach(({ symbol, data }) => {
         if (data) {
           newStockData[symbol] = data;
@@ -108,7 +108,7 @@ export default function WatchlistPage() {
     const updatedWatchlist = watchlist.filter(stock => stock.symbol !== symbol);
     setWatchlist(updatedWatchlist);
     console.log(watchlist);
-    
+
     // Remove from stockData as well
     const updatedStockData = { ...stockData };
     delete updatedStockData[symbol];
@@ -141,7 +141,7 @@ export default function WatchlistPage() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-6 sm:mb-8">
-           <Link
+          <Link
             href="/"
             className="inline-flex items-center px-4 py-1 mb-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm sm:text-base"
           >
@@ -248,11 +248,10 @@ export default function WatchlistPage() {
                             <span className="text-xl font-bold text-gray-900">
                               ₹{data.price.toFixed(2)}
                             </span>
-                            <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold ${
-                              isPositive 
-                                ? "bg-green-100 text-green-800" 
+                            <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold ${isPositive
+                                ? "bg-green-100 text-green-800"
                                 : "bg-red-100 text-red-800"
-                            }`}>
+                              }`}>
                               {isPositive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
                               {isPositive ? "+" : ""}{data.change.toFixed(2)} ({isPositive ? "+" : ""}{data.changePercent.toFixed(2)}%)
                             </div>
@@ -303,11 +302,12 @@ export default function WatchlistPage() {
                   <BarChart3 className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">No stocks found</h3>
                   <p className="text-gray-600 text-sm">
-                    No stocks in your watchlist match "{searchTerm}"
+                    No stocks in your watchlist match
                   </p>
                 </div>
               </div>
             )}
+
           </>
         )}
       </div>
