@@ -13,16 +13,23 @@ export function FavoriteButton({ symbol, name }) {
     }
   }, [symbol])
 
+  /**
+   * Toggle the favorite status of the stock and update the localStorage.
+   */
   const toggleFavorite = () => {
     let favorites = JSON.parse(localStorage.getItem("favoriteStocks") || "[]")
 
     if (isFavorite) {
+      // Remove the stock from favorites if it's already favorited
       favorites = favorites.filter((fav) => fav.symbol !== symbol)
     } else {
+      // Add the stock to favorites if it's not already favorited
       favorites.push({ symbol, name, addedAt: new Date().toISOString() })
     }
 
+    // Update the localStorage with the new list of favorites
     localStorage.setItem("favoriteStocks", JSON.stringify(favorites))
+    // Update the component state with the new favorite status
     setIsFavorite(!isFavorite)
   }
 

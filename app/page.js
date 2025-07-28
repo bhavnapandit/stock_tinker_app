@@ -4,8 +4,10 @@ import { TrendingUp, Search, BarChart3, Star, Activity, Target, Zap } from 'luci
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-pink-50 overflow-x-hidden">
-      <div className="bg-gradient-to-r from-red-100 via-white to-pink-50 shadow-lg">
+      {/* Header with search bar and title */}
+      <div className="bg-gradient-to-r from-red-100 via-white to-pink-100 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-12">
+          {/* Title and search bar */}
           <div className="text-center mb-10">
             <div className="flex items-center justify-center gap-3 mb-6">
               <Activity className="w-12 h-12 text-black animate-pulse" />
@@ -18,6 +20,7 @@ export default function HomePage() {
             </p>
           </div>
 
+          {/* Search bar */}
           <div className="relative z-20 max-w-2xl mx-auto">
             <div className="bg-white backdrop-blur-sm rounded-2xl p-6 border border-white shadow-2xl">
               <Searchbar />
@@ -26,8 +29,10 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Features section */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20 relative z-0">
+          {/* Feature 1 - Search Stocks */}
           <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-red-100 hover:border-red-200 hover:-translate-y-2">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold text-gray-800">Search Stocks</h3>
@@ -42,6 +47,7 @@ export default function HomePage() {
             <div className="mt-6 h-1 bg-gradient-to-r from-red-400 to-pink-400 rounded-full"></div>
           </div>
 
+          {/* Feature 2 - Price Charts */}
           <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-red-100 hover:border-red-200 hover:-translate-y-2">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold text-gray-800">Price Charts</h3>
@@ -56,6 +62,7 @@ export default function HomePage() {
             <div className="mt-6 h-1 bg-gradient-to-r from-pink-400 to-red-400 rounded-full"></div>
           </div>
 
+          {/* Feature 3 - Market Trends */}
           <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-red-100 hover:border-red-200 hover:-translate-y-2">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold text-gray-800">Market Trends</h3>
@@ -70,6 +77,7 @@ export default function HomePage() {
             <div className="mt-6 h-1 bg-gradient-to-r from-red-400 to-red-500 rounded-full"></div>
           </div>
 
+          {/* Feature 4 - Favorites */}
           <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-red-100 hover:border-red-200 hover:-translate-y-2">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold text-gray-800">Favorites</h3>
@@ -85,6 +93,7 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* How to use section */}
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-red-100 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-red-100 to-transparent rounded-full -translate-y-32 translate-x-32 opacity-50"></div>
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-pink-100 to-transparent rounded-full translate-y-24 -translate-x-24 opacity-50"></div>
@@ -101,6 +110,7 @@ export default function HomePage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-12">
+              {/* Step 1 - Search Stocks */}
               <div className="text-center group">
                 <div className="relative mb-8">
                   <div className="bg-gradient-to-br from-red-500 to-red-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
@@ -119,6 +129,7 @@ export default function HomePage() {
                 </div>
               </div>
 
+              {/* Step 2 - View Details */}
               <div className="text-center group">
                 <div className="relative mb-8">
                   <div className="bg-gradient-to-br from-red-500 to-red-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
@@ -174,4 +185,3 @@ export default function HomePage() {
     </div>
   )
 }
-

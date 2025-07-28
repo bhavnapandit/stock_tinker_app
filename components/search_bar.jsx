@@ -4,13 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Search, Loader2, TrendingUp } from "lucide-react";
 
-/**
- * @typedef {Object} SearchResult
- * @property {string} symbol
- * @property {string} name
- * @property {string} exchange
- * @property {string} type
- */
 
 export function Searchbar() {
   const [query, setQuery] = useState("");
