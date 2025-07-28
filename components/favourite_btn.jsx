@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
-import { Heart } from "lucide-react"
+import { Heart} from "lucide-react"
+import Link from "next/link"
 
 export function FavoriteButton({ symbol, name }) {
   const [isFavorite, setIsFavorite] = useState(false)
@@ -34,6 +35,7 @@ export function FavoriteButton({ symbol, name }) {
   }
 
   return (
+    <>
     <button
       className={`favorite-button flex items-center gap-2 px-4 py-2 rounded border ${
         isFavorite ? "bg-red-100 text-red-600" : "bg-gray-100 text-gray-600"
@@ -43,6 +45,11 @@ export function FavoriteButton({ symbol, name }) {
       <Heart className={`w-4 h-4 ${isFavorite ? "fill-current" : ""}`} />
       {isFavorite ? "Favorited" : "Add to Favorites"}
     </button>
+    <Link href="/watchlist" className="text-sm text-gray-600 hover:underline">
+        Go to Watchlist
+
+    </Link>
+    </>
   )
 }
 

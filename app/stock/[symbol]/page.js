@@ -1,62 +1,73 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
-import Link from "next/link";
-import { FavoriteButton } from "@/components/favourite_btn";
+import { FavoriteButton } from "@/components/favourite_btn"
 import StockChart from "@/components/stock_chart";
-import { ArrowLeft, TrendingUp, TrendingDown, BarChart3, Activity } from "lucide-react";
+import { ArrowLeft, TrendingUp, TrendingDown, BarChart3, Activity } from "lucide-react"
+import Link from "next/link"
 
-export default function StockPage() {
-  const { symbol } = useParams();
-  const router = useRouter();
-  const [stockData, setStockData] = useState(null);
-  const [loading, setLoading] = useState(true);
+export const metadata = {
+  title: (name) => `${name} | Stock Tracker`,
+  description: (name) => `Get real-time stock prices and detailed information about ${name}`,
+};
 
-  const getStockData = async (symbol) => {
-    try {
-      const res = await fetch(
-        `https://portal.tradebrains.in/api/assignment/stock/${symbol}/prices?days=1&type=INTRADAY&limit=1`
-      );
-      const data = await res.json();
-      if (!data || data.length === 0) return null;
-      const latest = data[0];
-      return {
-        symbol: symbol.toUpperCase(),
-        name: `${symbol.toUpperCase()} Limited`,
-        price: latest.close,
-        change: latest.change,
-        changePercent: latest.percent,
-        volume: latest.volume,
-        valueTraded: latest.value,
-        open: latest.open,
-        high: latest.high,
-        low: latest.low,
-        prevClose: latest.prev_close,
-      };
-    } catch (error) {
-      console.error("Failed to fetch stock price data:", error);
-      return null;
+export async function getStockData(symbol) {
+  try {
+    const res = await fetch(
+      `https://portal.tradebrains.in/api/assignment/stock/${symbol}/prices?days=1&type=INTRADAY&limit=1`
+    )
+    const data = await res.json()
+    if (!data || data.length === 0) return null
+    const latest = data[0]
+    return {
+      symbol: symbol.toUpperCase(),
+      name: `${symbol.toUpperCase()} Limited`,
+      price: latest.close,
+      change: latest.change,
+      changePercent: latest.percent,
+      volume: latest.volume,
+      valueTraded: latest.value,
+      open: latest.open,
+      high: latest.high,
+      low: latest.low,
+      prevClose: latest.prev_close,
     }
-  };
-
-  useEffect(() => {
-    if (!symbol) return;
-
-    (async () => {
-      const data = await getStockData(symbol);
-      setStockData(data);
-      setLoading(false);
-    })();
-  }, [symbol]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-gray-500 text-lg">
-        Loading stock data...
-      </div>
-    );
+  } catch (error) {
+    console.error("Failed to fetch stock price data:", error)
+    return null
   }
+}
+
+const getStockName = async (symbol) => {
+  try {
+    const res = await fetch(
+      `https://portal.tradebrains.in/api/assignment/search?keyword=${symbol}&length=1`
+    );
+    const data = await res.json();
+
+    if (!data || data.length === 0) return null;
+
+    const latest = data[0];
+    console.log(latest.company);
+
+    setName(latest.company);
+
+    // Store both name and symbol in localStorage
+    const stockInfo = {
+      name: latest.company,
+      symbol: latest.symbol
+    };
+
+    localStorage.setItem("stocks", JSON.stringify(stockInfo));
+
+    return stockInfo;
+  } catch (error) {
+    console.error("Failed to fetch stock price data:", error);
+    return null;
+  }
+};
+
+export default async function StockPage({ params }) {
+  const { symbol } = await params
+  const stockData = await getStockData(symbol)
+  const name = await getStockData(symbol);
 
   if (!stockData) {
     return (
@@ -74,7 +85,7 @@ export default function StockPage() {
           </Link>
         </div>
       </div>
-    );
+    )
   }
 
   const isPositive = stockData.change >= 0
@@ -198,4 +209,4 @@ export default function StockPage() {
       </div>
     </div>
   )
-}
+} 

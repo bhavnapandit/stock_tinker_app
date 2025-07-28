@@ -1,7 +1,8 @@
 "use client";
-
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { TrendingUp, TrendingDown } from "lucide-react";
+
 function TickerBar() {
   const [tickerData, setTickerData] = useState([]);
 
@@ -64,18 +65,35 @@ function TickerBar() {
   if (tickerData.length === 0) return null;
 
   return (
-   <div className="w-full bg-gray-900 text-white py-2 overflow-hidden relative">
+    <div className="w-full bg-gray-900 text-white py-2 overflow-hidden relative">
       <div className="ticker-animate flex whitespace-nowrap">
         {tickerData.concat(tickerData).map((item, index) => (
-          <div key={`${item.symbol}-${index}`} className="flex items-center gap-4 px-6 whitespace-nowrap flex-shrink-0">
-            <div className="font-bold text-blue-400 text-sm">
+          <div
+            key={`${item.symbol}-${index}`}
+            className="flex items-center gap-4 px-6 whitespace-nowrap flex-shrink-0"
+          >
+            <Link
+              href={`/stock/${item.symbol.replace(/\s+/g, "-").toLowerCase()}`}
+              className="font-bold text-blue-400 text-sm cursor-pointer hover:text-blue-300 transition-colors"
+            >
               {item.symbol}
-            </div>
-            <span className="font-medium text-sm">₹{item.price.toFixed(2)}</span>
-            <div className={`flex items-center gap-1 ${item.change >= 0 ? "text-green-400" : "text-red-400"}`}>
-              {item.change >= 0 ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
+            </Link>
+            <span className="font-medium text-sm">
+              ₹{item.price.toFixed(2)}
+            </span>
+            <div
+              className={`flex items-center gap-1 ${
+                item.change >= 0 ? "text-green-400" : "text-red-400"
+              }`}
+            >
+              {item.change >= 0 ? (
+                <TrendingUp className="h-3 w-3" />
+              ) : (
+                <TrendingDown className="h-3 w-3" />
+              )}
               <span className="text-xs">
-                {item.change >= 0 ? "+" : ""}₹{item.change.toFixed(2)} ({item.change >= 0 ? "+" : ""}
+                {item.change >= 0 ? "+" : ""}₹{item.change.toFixed(2)} (
+                {item.change >= 0 ? "+" : ""}
                 {item.changePercent.toFixed(2)}%)
               </span>
             </div>
@@ -92,11 +110,11 @@ function TickerBar() {
             transform: translateX(-50%);
           }
         }
-        
+
         .ticker-animate {
           animation: scroll 30s linear infinite;
         }
-        
+
         .ticker-animate:hover {
           animation-play-state: paused;
         }
