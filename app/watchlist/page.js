@@ -11,7 +11,8 @@ import {
   AlertCircle,
   RefreshCw,
   Search,
-  BarChart3
+  BarChart3,
+  ArrowLeft
 } from "lucide-react";
 
 export default function WatchlistPage() {
@@ -140,6 +141,13 @@ export default function WatchlistPage() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-6 sm:mb-8">
+           <Link
+            href="/"
+            className="inline-flex items-center px-4 py-1 mb-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm sm:text-base"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Search
+          </Link>
           <div className="flex items-center gap-3 mb-4">
             <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" />
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
