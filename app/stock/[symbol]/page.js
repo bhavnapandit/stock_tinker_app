@@ -3,10 +3,29 @@ import StockChart from "@/components/stock_chart";
 import { ArrowLeft, TrendingUp, TrendingDown, BarChart3, Activity } from "lucide-react"
 import Link from "next/link"
 
-export const metadata = {
-  title: (name) => `${name} | Stock Tracker`,
-  description: (name) => `Get real-time stock prices and detailed information about ${name}`,
-};
+
+export async function generateMetadata({ params }) {
+  const { symbol } = params;
+
+  try {
+    const res = await fetch(
+      `https://portal.tradebrains.in/api/assignment/search?keyword=${symbol}&length=1`
+    );
+    const data = await res.json();
+    const name = data?.[0]?.company || symbol.toUpperCase();
+
+    return {
+      title: `${name} | Stock Tracker`,
+      description: `Get real-time stock prices and detailed information about ${name}`,
+    };
+  } catch (error) {
+    console.error("Metadata fetch error:", error);
+    return {
+      title: `${symbol.toUpperCase()} | Stock Tracker`,
+      description: `Real-time stock price and data for ${symbol.toUpperCase()}`,
+    };
+  }
+}
 
 export async function getStockData(symbol) {
   try {
