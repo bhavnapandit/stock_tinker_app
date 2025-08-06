@@ -70,48 +70,46 @@ export default function WatchlistPage() {
   if (loading) return <p className="text-center mt-10">Loading...</p>;
 
   return (
-    <div className="p-4 max-w-3xl mx-auto">
-      <Link href="/" className="text-blue-600 underline mb-4 inline-block">← Back</Link>
-      <h1 className="text-2xl font-bold mb-4">My Watchlist</h1>
+   <div className="p-4  mx-auto bg-gradient-to-br from-red-50 to-white min-h-screen">
+      <Link href="/" className="text-red-600 underline mb-4 inline-block hover:text-red-800 transition-colors font-medium">← Back</Link>
+      <h1 className="text-3xl font-bold mb-6 text-red-900 bg-gradient-to-r from-red-800 to-red-600 bg-clip-text ">My Watchlist</h1>
 
-      <div className="flex gap-2 mb-4">
+      <div className="flex gap-3 mb-6">
         <input
           type="text"
           placeholder="Search..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="flex-1 px-3 py-2 border rounded"
+          className="flex-1 px-4 py-3 border-2 border-red-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white/80 backdrop-blur-sm shadow-sm placeholder-red-300"
         />
-        <button
-          onClick={loadWatchlist}
-          disabled={refreshing}
-          className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
-        >
-          <RefreshCw className="w-4 h-4 inline mr-1" />
-          Refresh
-        </button>
       </div>
 
       {filteredWatchlist.length === 0 ? (
-        <p>No stocks found for &quot;{searchTerm}&quot;</p>
+        <p className="text-red-500 bg-red-50 p-4 rounded-lg border border-red-200">No stocks found for &quot;{searchTerm}&quot;</p>
       ) : (
         <div className="space-y-4">
           {filteredWatchlist.map((stock) => {
             const data = stockData[stock.symbol];
             return (
-              <div key={stock.symbol} className="border p-4 rounded">
-                <h2 className="font-semibold">{stock.name} ({stock.symbol})</h2>
+              <div key={stock.symbol} className="border-2 border-red-100 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-white/90 backdrop-blur-sm hover:border-red-200 hover:-translate-y-1">
+                <h2 className="font-bold text-xl text-red-900 mb-3">{stock.name} ({stock.symbol})</h2>
                 {data ? (
-                  <div className="text-sm mt-2">
-                    <p>Price: ₹{data.price.toFixed(2)}</p>
-                    <p>Change: {data.change.toFixed(2)} ({data.percent.toFixed(2)}%)</p>
-                    <p>High: ₹{data.high.toFixed(2)}, Low: ₹{data.low.toFixed(2)}</p>
-                    <Link href={`/stock/${stock.symbol.toLowerCase()}`} className="text-blue-600 underline mt-2 inline-block">
+                  <div className="text-sm mt-3 text-red-800 space-y-2">
+                    <p className="bg-red-50 p-2 rounded-md border-l-4 border-red-400">
+                      <span className="font-semibold">Price:</span> ₹{data.price.toFixed(2)}
+                    </p>
+                    <p className="bg-red-50 p-2 rounded-md border-l-4 border-red-400">
+                      <span className="font-semibold">Change:</span> {data.change.toFixed(2)} ({data.percent.toFixed(2)}%)
+                    </p>
+                    <p className="bg-red-50 p-2 rounded-md border-l-4 border-red-400">
+                      <span className="font-semibold">High:</span> ₹{data.high.toFixed(2)}, <span className="font-semibold">Low:</span> ₹{data.low.toFixed(2)}
+                    </p>
+                    <Link href={`/stock/${stock.symbol.toLowerCase()}`} className="inline-block mt-4 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-medium">
                       View Details
                     </Link>
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500">No data available</p>
+                  <p className="text-sm text-red-400 bg-red-50 p-3 rounded-lg border border-red-200">No data available</p>
                 )}
               </div>
             );

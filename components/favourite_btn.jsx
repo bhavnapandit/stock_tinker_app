@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import { Heart} from "lucide-react"
+import { ArrowRight, Heart} from "lucide-react"
 import Link from "next/link"
 
 export function FavoriteButton({ symbol, name }) {
@@ -45,9 +45,12 @@ export function FavoriteButton({ symbol, name }) {
       <Heart className={`w-4 h-4 ${isFavorite ? "fill-current" : ""}`} />
       {isFavorite ? "Favorited" : "Add to Favorites"}
     </button>
-    <Link href="/watchlist" className="text-sm text-gray-600 hover:underline">
-        Go to Watchlist
-
+    <Link
+      href="/watchlist"
+      className="text-sm font-medium text-red-600 hover:underline mt-2 block"
+    >
+      Go to Watchlist
+      <ArrowRight className="w-4 h-4 ml-2 inline-block" />
     </Link>
     </>
   )
